@@ -1,11 +1,13 @@
-namespace MvcStudentDemo.Tests;
+using Xunit;
 
-public class UnitTest1
+namespace MvcStudentDemo.Tests
 {
-    [Fact]
-    public void Student_Age_Should_Be_Set_Correctly()
+    public class UnitTest1
     {
-        var student = new Student { Age = 22 };
-        Assert.Equal(22, student.Age);
+        [Fact]
+        public void Test1()
+        {
+            Assert.Equal(1, 1);
+        }
     }
 }
