@@ -1,0 +1,38 @@
+name: ASP.NET Core CI/CD
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore
+
+      - name: Run tests
+        run: dotnet test --no-build --verbosity normal
+
+      - name: Publish
+        run: dotnet publish MvcStudentDemo/MvcStudentDemo.csproj -c Release -o ./publish
+
+      - name: Upload published artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: mvc-published
+          path: ./publish

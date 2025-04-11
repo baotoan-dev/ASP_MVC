@@ -1,0 +1,21 @@
+@model MvcStudentDemo.Models.Student
+
+<h2>Xác nhận xóa sinh viên</h2>
+
+<div class="alert alert-danger">
+    Bạn có chắc chắn muốn xóa sinh viên <strong>@Model.Name</strong> không?
+</div>
+
+<dl class="row">
+    <dt class="col-sm-2">Tên</dt>
+    <dd class="col-sm-10">@Model.Name</dd>
+
+    <dt class="col-sm-2">Tuổi</dt>
+    <dd class="col-sm-10">@Model.Age</dd>
+</dl>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Xác nhận xóa</button>
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>
