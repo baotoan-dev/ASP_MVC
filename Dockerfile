@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
 COPY *.sln .
-COPY MvcStudentDemo/*.csproj ./MvcStudentDemo/
+COPY src/MvcStudentDemo/*.csproj ./MvcStudentDemo/
 RUN dotnet restore
 
 COPY . .
